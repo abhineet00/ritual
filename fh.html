@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voice Recognition and Charger Detection</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div id="laal">
+        <div id="img1"><img src="Untitled-1.png" alt=""></div>
+        <P id="extra"></P>
+        <p id="status"></p>
+    </div>
+    <div id="hara">
+        <div id="img2"><img src="Untitled-2.png" alt=""></div>
+        <P id="extra1"></P>
+        <p id="status1"></p>
+    </div>
+
+  <script>
+        var ab = document.getElementById("laal");
+        var bc = document.getElementById("hara");
+
+        var a =document.getElementById("img1");
+        a.style.display="none";
+
+        var b =document.getElementById("img2");
+        b.style.display="none";
+  
+ 
+    
+    function checkCharger() {
+            if (navigator.getBattery) {
+                navigator.getBattery().then(function (battery) {
+                    if (battery.charging) {
+                        document.getElementById("extra").textContent = "TOO MUCH SCREEN TIME";
+                        document.getElementById("status").textContent = "CHARGER DEACTIVATED!";
+                        document.body.style.backgroundColor = "red";
+                        a.style.display="block";
+                    } else {
+                        document.getElementById("status").textContent = "Charger not connected.";
+                    }
+                });
+            } else {
+                document.getElementById("status").textContent = "not working bc";
+            }
+        }
+
+        
+        let myInterval = setInterval(checkCharger, 5000); 
+
+
+    if ('webkitSpeechRecognition' in window) {
+      const recognition = new webkitSpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      recognition.onresult = function(event) {
+        let interimTranscript = '';
+        let finalTranscript = '';
+
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript.toLowerCase();
+          } else {
+            interimTranscript += event.results[i][0].transcript.toLowerCase();
+          }
+        }
+
+ 
+        if (finalTranscript.includes('promise')) {
+          document.body.style.backgroundColor = 'green';
+          document.getElementById("extra1").textContent = "ACCEPTED";
+          document.getElementById("status1").textContent = "CHARGER ACTIVATED!";
+          b.style.display="block";
+          a.style.display="none";
+          ab.style.display="none";
+          clearInterval(myInterval);
+          
+          
+          
+
+        }
+      };
+
+      recognition.onerror = function(event) {
+        console.error('Error occurred in recognition: ' + event.error);
+      };
+
+      recognition.onend = function() {
+        console.log('Recognition ended.');
+        recognition.start();
+    
+      };
+
+      recognition.start();
+    } else {
+      alert('Web Speech API is not supported in this browser.');
+    }
+   
+  </script>
+</body>
+</html>

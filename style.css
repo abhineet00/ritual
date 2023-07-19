@@ -1,0 +1,43 @@
+body{
+    background-color: black;
+}
+#status{
+    color: white;
+    font-family: poppins;
+    font-size: 4rem;
+    text-align: center;
+}
+#extra{
+    color: white;
+    font-family: poppins;
+    font-size: 10rem;
+    text-align: center;
+    font-weight: 900;
+}
+#status1{
+    color: white;
+    font-family: poppins;
+    font-size: 4rem;
+    text-align: center;
+}
+#extra1{
+    color: white;
+    font-family: poppins;
+    font-size: 10rem;
+    text-align: center;
+    font-weight: 900;
+}
+#img1 img{
+    width: 30rem;
+}
+#img2 img{
+    width: 30rem;
+}
+#img1{
+    margin-top: 15rem;
+    text-align: center;
+}
+#img2{
+    margin-top: 15rem;
+    text-align: center;
+}
