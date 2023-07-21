@@ -7,6 +7,12 @@ body{
     font-size: 4rem;
     text-align: center;
 }
+#stat{
+    color: white;
+    font-family: poppins;
+    font-size: 4rem;
+    text-align: center;
+}
 #extra{
     color: white;
     font-family: poppins;
