@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rituals</title>
+  <title>Voice Recognition and Charger Detection</title>
   <link rel="stylesheet" href="style.css" />
   <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap"
@@ -19,6 +19,7 @@
         <P id="extra1"></P>
         <p id="status1"></p>
     </div>
+    <p id="stat"></p>
 
   <script>
         var ab = document.getElementById("laal");
@@ -29,7 +30,8 @@
 
         var b =document.getElementById("img2");
         b.style.display="none";
-  
+   
+        
  
     
     function checkCharger() {
@@ -40,8 +42,15 @@
                         document.getElementById("status").textContent = "CHARGER DEACTIVATED!";
                         document.body.style.backgroundColor = "red";
                         a.style.display="block";
+                        ab.style.display="block";
+                        bc.style.display="block";
+
                     } else {
-                        document.getElementById("status").textContent = "Connect the charger.";
+                        document.getElementById("stat").textContent = "Charger not connected.";
+                        ab.style.display="none";
+                        bc.style.display="none";
+                        document.body.style.backgroundColor = "black";
+
                     }
                 });
             } else {
